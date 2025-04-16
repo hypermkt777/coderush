@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코드러쉬 | Coderush</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      --bg-light: #f4f4f4;
+      --text-dark: #ffffff;
+      --text-light: #222222;
+      --primary: #00ffe7;
+      --primary-dark: #00c6b3;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light-mode {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    header.hero {
+      padding: 6rem 2rem 4rem;
+      background: url('https://images.unsplash.com/photo-1630411420887-37a70c8c57b2') center/cover no-repeat;
+      color: white;
+      text-shadow: 0 0 20px #00ffe7;
+    }
+    header.hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    header.hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .cta-button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: var(--primary);
+      color: #000;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: var(--primary-dark);
+      box-shadow: 0 0 15px var(--primary);
+      transform: scale(1.05);
+    }
+    .toggle-mode {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      border: none;
+      color: #000;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .dashboard-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    .card {
+      background-color: #1f1b3a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 255, 231, 0.1);
+      transition: transform 0.3s;
+    }
+    body.light-mode .card {
+      background-color: #ffffff;
+      color: #000;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(0, 255, 231, 0.3);
+    }
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+    .contact-section {
+      background-color: #121212;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .contact-section h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: none;
+      font-family: inherit;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .contact-form button {
+      background: var(--primary);
+      border: none;
+      padding: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover {
+      background: var(--primary-dark);
+    }
+    footer {
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #999;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-mode" onclick="toggleMode()">🌗 모드 전환</button>
+  <header class="hero">
+    <h1>CodeRush: Your AI Coding Partner</h1>
+    <p>AI와 함께 미래를 여는 코드러쉬!<br>코드를 통한 비즈니스 혁신과 자동화를 지금 시작하세요.</p>
+    <a class="cta-button" href="#code">지금 체험하기</a>
+  </header>
+
+  <section class="dashboard-section">
+    <div class="card">
+      <h3>AI 코드 생성기</h3>
+      <p>프롬프트를 입력하면 AI가 자동으로 코드 생성! 최신 GPT 기술 기반.</p>
+    </div>
+    <div class="card">
+      <h3>실시간 코드 피드백</h3>
+      <p>작성한 코드에 대해 즉시 분석 및 개선 제안.</p>
+    </div>
+    <div class="card">
+      <h3>비즈니스 자동화</h3>
+      <p>업무 반복 작업을 자동화하는 AI 스크립트 제공.</p>
+    </div>
+    <div class="card">
+      <h3>최신 트렌드 학습</h3>
+      <p>AI, 클라우드, 자동화 기술에 대한 집중 콘텐츠 제공.</p>
+    </div>
+  </section>
+
+  <section class="code-section" id="code">
+    <h3>💻 실시간 프롬프트 → 코드 예제 + 실행</h3>
+    <textarea id="prompt" placeholder="예: 버튼을 누르면 알림창이 뜨는 HTML 코드"></textarea>
+    <button class="cta-button" onclick="generateCode()">코드 생성</button>
+    <pre id="codeOutput">// 여기에 코드가 출력됩니다.</pre>
+    <iframe id="preview" height="200"></iframe>
+  </section>
+
+  <section class="contact-section">
+    <h3>📬 유저 피드백 및 문의하기</h3>
+    <form class="contact-form">
+      <input type="text" placeholder="이름" required />
+      <input type="email" placeholder="이메일" required />
+      <textarea placeholder="메시지를 입력해주세요..." required></textarea>
+      <button type="submit">문의 보내기</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 Coderush. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    function generateCode() {
+      const prompt = document.getElementById('prompt').value;
+      const codeOutput = document.getElementById('codeOutput');
+      const preview = document.getElementById('preview');
+      let generatedCode = '';
+
+      if (prompt.includes('알림')) {
+        generatedCode = `<button onclick=\"alert('Hello, world!')\">Click me</button>`;
+      } else {
+        generatedCode = '<p>해당 프롬프트에 대한 예제가 없습니다.</p>';
+      }
+
+      codeOutput.textContent = generatedCode;
+      preview.srcdoc = generatedCode;
+    }
+  </script>
+</body>
+</html>
